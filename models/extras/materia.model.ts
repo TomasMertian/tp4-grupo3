@@ -14,7 +14,7 @@ export class MateriaModel {
   public getCuatrimestre(): number { return this.cuatrimestre }
   public setCuatrimestre(cuatrimestre: number): void { this.cuatrimestre = cuatrimestre }
 
-  public getAllAttributes(): { idMateria: string; nombre: string; cuatrimestre: number } {
+  public getAllAttributes(): object {
     return {
       idMateria: this.idMateria,
       nombre: this.nombre,
