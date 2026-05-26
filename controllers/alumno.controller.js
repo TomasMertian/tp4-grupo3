@@ -40,4 +40,45 @@ const getAlumnoById = async (req, res) => {
   }
 }
 
-module.exports = { getAlumnoAll, getAlumnoById }
+const deleteAlumno = async (req, res) => {
+  try {
+    const { legajo } = req.params
+
+    const data = await fs.readFile('./data/alumnos.json', 'utf8')
+    const alumnos = JSON.parse(data)
+
+    // comprueba si el alumno existe usando el legajo
+    const existeAlumno = alumnos.find((a) => a.legajo === Number(legajo))
+
+    // si no existe, da un error 404 (not found) y corta la ejecucion
+    if (!existeAlumno) {
+      return res.status(404).json({
+        msg: `No se puede eliminar: No existe el alumno con el legajo ${legajo}`
+      })
+    }
+
+    // si existe, guarda a todos los alumnos excepto el que coincide con el legajo que se quiere eliminar
+    const alumnosActualizados = alumnos.filter(
+      (a) => a.legajo !== Number(legajo)
+    )
+
+    // sobreecribe el archivo json con el arreglo actualizado
+    await fs.writeFile(
+      './data/alumnos.json',
+      JSON.stringify(alumnosActualizados, null, 2),
+      'utf8'
+    )
+
+    // devuelve el codigo 200 confirmando que se elimino correctamente
+    return res.status(200).json({
+      msg: `El alumno con legajo ${legajo} fue eliminado correctamente`
+    })
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({
+      error: `No se pudo eliminar el alumno con legajo n° ${req.params.legajo}`
+    })
+  }
+}
+
+module.exports = { getAlumnoAll, getAlumnoById, deleteAlumno }
