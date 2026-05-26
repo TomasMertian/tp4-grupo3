@@ -2,8 +2,10 @@ const { Router } = require('express')
 const {
   getMateriaAll,
   getMateriaById,
+  postMateria,
   updateMateria
 } = require('../../controllers/materia.controller')
+const { validateMateria } = require('../../middlewares/validateMateria')
 
 const rutas = Router()
 
