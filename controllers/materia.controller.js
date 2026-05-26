@@ -1,4 +1,5 @@
 const fs = require('fs').promises
+const { MateriaModel } = require('../models/extras/materia.model')
 
 const getMateriaAll = async (req, res) => {
   try {

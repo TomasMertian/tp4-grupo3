@@ -23,5 +23,15 @@
     "idMateria": "ING1",
     "nombre": "Inglés Técnico I",
     "cuatrimestre": 1
+  },
+  {
+    "idMateria": "BD1",
+    "nombre": "Base de datos 1",
+    "cuatrimestre": 2
+  },
+  {
+    "idMateria": "BD2",
+    "nombre": "Base de datos 2",
+    "cuatrimestre": 2
   }
 ]

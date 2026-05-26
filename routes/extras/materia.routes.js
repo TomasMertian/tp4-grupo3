@@ -8,6 +8,7 @@ const {
 const rutas = Router()
 
 rutas.get('/', getMateriaAll)
+rutas.post('/', validateMateria, postMateria)
 rutas.get('/:idMateria', getMateriaById)
 rutas.put('/:idMateria', updateMateria)
 
