@@ -1,7 +1,6 @@
 const fs = require('fs').promises
 import { AlumnoModel } from '../models/alumno.model'
-import { validateAlumno } from '../middlewares/validateAlumno'
-const postAlumno = async (req, res) => {
+export const postAlumno = async (req, res) => {
   try {
     const {
       legajo,
@@ -13,15 +12,7 @@ const postAlumno = async (req, res) => {
       isActive
     } = req.body
 
-    const newAlumno = new AlumnoModel(
-      nombre,
-      apellido,
-      email,
-      legajo,
-      fechaAlta,
-      modificacion,
-      isActive
-    )
+    const newAlumno = new AlumnoModel(req.body)
 
     const datos = await fs.readFile('./data/alumnos.json', 'utf8')
     const alumno = JSON.parse(datos)
@@ -34,3 +25,4 @@ const postAlumno = async (req, res) => {
     return res.status(500).json({ error: 'solicitud invalida' })
   }
 }
+module.exports = { postAlumno }

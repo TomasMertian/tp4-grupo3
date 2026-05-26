@@ -1,8 +1,8 @@
 const { Router } = require('express')
 const {
   getAlumnoAll,
-  getAlumnoById
-  //postAlumno
+  getAlumnoById,
+  postAlumno
 } = require('../controllers/alumno.controller')
 
 const rutas = Router()
@@ -10,6 +10,6 @@ const rutas = Router()
 rutas.get('/', getAlumnoAll)
 rutas.get('/:legajo', getAlumnoById)
 
-//rutas.post('/',validateAlumno, postAlumno)
+rutas.post('/', validateAlumno, postAlumno)
 
 module.exports = rutas
