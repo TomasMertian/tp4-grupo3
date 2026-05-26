@@ -1,6 +1,6 @@
 const fs = require('fs').promises
-import { AlumnoModel } from '../models/alumno.model'
-export const postAlumno = async (req, res) => {
+const { AlumnoModel } = require('../models/alumno.model')
+const postAlumno = async (req, res) => {
   try {
     const {
       legajo,
@@ -12,7 +12,15 @@ export const postAlumno = async (req, res) => {
       isActive
     } = req.body
 
-    const newAlumno = new AlumnoModel(req.body)
+    const newAlumno = new AlumnoModel(
+      nombre,
+      apellido,
+      email,
+      legajo,
+      fechaAlta,
+      modificacion,
+      isActive
+    )
 
     const datos = await fs.readFile('./data/alumnos.json', 'utf8')
     const alumno = JSON.parse(datos)
@@ -25,4 +33,5 @@ export const postAlumno = async (req, res) => {
     return res.status(500).json({ error: 'solicitud invalida' })
   }
 }
+
 module.exports = { postAlumno }

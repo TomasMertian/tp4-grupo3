@@ -1,5 +1,5 @@
-import { PersonaModel } from './persona.model.ts'
-export class AlumnoModel extends PersonaModel {
+import { PersonaModel } from './persona.model'
+class AlumnoModel extends PersonaModel {
   readonly legajo: number
   readonly fechaAlta: Date
   protected modificacion: Date
@@ -59,3 +59,4 @@ export class AlumnoModel extends PersonaModel {
     }
   }
 }
+module.exports = { AlumnoModel }
