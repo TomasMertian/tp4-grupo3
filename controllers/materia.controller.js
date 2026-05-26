@@ -37,31 +37,6 @@ const getMateriaById = async (req, res) => {
   }
 }
 
-const postMateria = async (req, res) => {
-  try {
-    const data = await fs.readFile('./data/extras/sys-materias.json', 'utf8')
-
-    const materias = JSON.parse(data)
-
-    const nuevaMateria = req.body
-
-    materias.push(nuevaMateria)
-
-    await fs.writeFile(
-      './data/extras/sys-materias.json',
-      JSON.stringify(materias, null, 2)
-    )
-
-    return res.status(201).json(nuevaMateria)
-  } catch (error) {
-    console.log(error)
-
-    return res.status(500).json({
-      error: 'No se pudo crear la materia'
-    })
-  }
-}
-
 const updateMateria = async (req, res) => {
   try {
     const data = await fs.readFile('./data/extras/sys-materias.json', 'utf8')

@@ -8,8 +8,6 @@ const {
 } = require('../../controllers/materia.controller')
 const { validateMateria } = require('../../middlewares/validateMateria')
 
-const { validateMateria } = require('../../middlewares/validateMateria')
-
 const rutas = Router()
 
 rutas.get('/', getMateriaAll)
