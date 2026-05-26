@@ -37,6 +37,8 @@
   {
     "idMateria": "MAT102",
     "nombre": "Matemática I - Actualizada",
+    "idMateria": "METO1",
+    "nombre": "Metodologia de sistemas 1",
     "cuatrimestre": 1
   }
 ]

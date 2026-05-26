@@ -100,9 +100,34 @@ const updateMateria = async (req, res) => {
   }
 }
 
-module.exports = {
-  getMateriaAll,
-  getMateriaById,
-  updateMateria,
-  postMateria
+const postMateria = async (req, res) => {
+  try {
+    const data = await fs.readFile('./data/extras/sys-materias.json', 'utf8')
+    const materias = JSON.parse(data)
+
+    if (materias.find((m) => m.idMateria === req.body.idMateria)) {
+      return res
+        .status(409)
+        .json({ msg: `Ya existe una materia con ID ${req.body.idMateria}` })
+    }
+
+    const materia = new MateriaModel(
+      req.body.idMateria,
+      req.body.nombre,
+      req.body.cuatrimestre
+    )
+    materias.push(materia.getAllAttributes())
+
+    await fs.writeFile(
+      './data/extras/sys-materias.json',
+      JSON.stringify(materias, null, 2)
+    )
+
+    return res.status(201).json(materia.getAllAttributes())
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({ error: 'No se pudo crear la materia' })
+  }
 }
+
+module.exports = { getMateriaAll, getMateriaById, postMateria, updateMateria }

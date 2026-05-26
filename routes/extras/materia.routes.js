@@ -3,9 +3,10 @@ const { Router } = require('express')
 const {
   getMateriaAll,
   getMateriaById,
-  updateMateria,
-  postMateria
+  postMateria,
+  updateMateria
 } = require('../../controllers/materia.controller')
+const { validateMateria } = require('../../middlewares/validateMateria')
 
 const { validateMateria } = require('../../middlewares/validateMateria')
 
