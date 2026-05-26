@@ -33,5 +33,10 @@
     "idMateria": "BD2",
     "nombre": "Base de datos 2",
     "cuatrimestre": 2
+  },
+  {
+    "idMateria": "METO1",
+    "nombre": "Metodologia de sistemas 1",
+    "cuatrimestre": 1
   }
 ]
