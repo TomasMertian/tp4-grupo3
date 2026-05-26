@@ -1,7 +1,7 @@
 [
   {
     "idMateria": "MAT101",
-    "nombre": "Matemática I",
+    "nombre": "Matemática I - Actualizada",
     "cuatrimestre": 1
   },
   {
@@ -35,6 +35,8 @@
     "cuatrimestre": 2
   },
   {
+    "idMateria": "MAT102",
+    "nombre": "Matemática I - Actualizada",
     "idMateria": "METO1",
     "nombre": "Metodologia de sistemas 1",
     "cuatrimestre": 1
