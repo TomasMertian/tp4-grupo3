@@ -232,5 +232,14 @@
     "fechaAlta": "2024-01-15",
     "modificacion": "2024-01-15",
     "isActive": true
+  },
+  {
+    "nombre": "Jun",
+    "apellido": "Prez",
+    "email": "jan@email.com",
+    "legajo": 12346,
+    "fechaAlta": "2025-01-15",
+    "modificacion": "2025-01-15",
+    "isActive": true
   }
 ]

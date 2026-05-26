@@ -1,7 +1,7 @@
 const validateAlumno = (req, res, next) => {
   const errors = []
 
-  if (!req.body.legajo || req.body.legajo.trim() === '') {
+  if (!req.body.legajo) {
     errors.push('legajo inexistente o vacio')
   }
   if (!req.body.nombre || req.body.nombre.trim() === '') {
@@ -16,7 +16,6 @@ const validateAlumno = (req, res, next) => {
   if (isNaN(Date.parse(req.body.fechaAlta))) {
     errors.push('el tipo de fecha Alta debe ser una fecha')
   }
-
   if (typeof req.body.isActive !== 'boolean') {
     errors.push('isActive debe ser un booleano')
   }
