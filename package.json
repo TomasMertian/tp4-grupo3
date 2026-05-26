@@ -10,6 +10,11 @@
     "lint": "npx standard",
     "fix": "npx standard --fix"
   },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
   "author": "",
   "license": "MIT",
   "dependencies": {
