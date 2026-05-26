@@ -5,7 +5,27 @@ const getAlumnoAll = async (req, res) => {
     const data = await fs.readFile('./data/alumnos.json', 'utf8')
     const alumnos = JSON.parse(data)
 
-    return res.status(200).json(alumnos)
+    // obtiene los query params de la URL
+    const { apellido, isActive } = req.query
+
+    // copia el array original para poder filtrarlo
+    let alumnosFiltrados = alumnos
+
+    // filtra por apellido si se recibe uno por query params
+    if (apellido) {
+      alumnosFiltrados = alumnosFiltrados.filter(
+        (a) => a.apellido.toLowerCase() === apellido.toLowerCase()
+      )
+    }
+
+    // filtra por estado activo si se recibe el query param
+    if (isActive) {
+      alumnosFiltrados = alumnosFiltrados.filter(
+        (a) => a.isActive === (isActive === 'true')
+      )
+    }
+
+    return res.status(200).json(alumnosFiltrados)
   } catch (error) {
     console.log(error)
     return res
