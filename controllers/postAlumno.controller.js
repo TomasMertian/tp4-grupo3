@@ -21,15 +21,24 @@ const postAlumno = async (req, res) => {
       modificacion,
       isActive
     )
-
     const datos = await fs.readFile('./data/alumnos.json', 'utf8')
-    const alumno = JSON.parse(datos)
-    alumno.push(newAlumno)
-    await fs.writeFile('./data/alumnos.json', JSON.stringify(alumno, null, 2))
+
+    const alumnos = JSON.parse(datos)
+
+    const yaExiste = alumnos.find((a) => a.legajo === legajo)
+    if (yaExiste) {
+      return res
+        .status(409)
+        .json({ error: 'ya existe un alumno con ese legajo' })
+    }
+
+    alumnos.push(newAlumno)
+    await fs.writeFile('./data/alumnos.json', JSON.stringify(alumnos, null, 2))
     return res
-      .status(200)
+      .status(201)
       .json({ msg: 'alumno creado con exito', alumno: newAlumno })
   } catch (error) {
+    console.log(error)
     return res.status(500).json({ error: 'solicitud invalida' })
   }
 }
