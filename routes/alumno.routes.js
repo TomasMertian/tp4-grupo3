@@ -2,7 +2,8 @@ const { Router } = require('express')
 const {
   getAlumnoAll,
   getAlumnoById,
-  deleteAlumno
+  deleteAlumno,
+  updateAlumno
 } = require('../controllers/alumno.controller')
 
 const { postAlumno } = require('../controllers/postAlumno.controller')
@@ -12,6 +13,7 @@ const rutas = Router()
 rutas.get('/', getAlumnoAll)
 rutas.get('/:legajo', getAlumnoById)
 rutas.delete('/:legajo', deleteAlumno)
+rutas.put('/:legajo', updateAlumno)
 
 rutas.post('/', validateAlumno, postAlumno)
 
